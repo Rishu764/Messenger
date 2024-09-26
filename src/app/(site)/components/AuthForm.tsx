@@ -66,6 +66,8 @@ const AuthForm = () => {
         toast.success('Logged in!');
       }
     }).finally(()=>setLoading(false));
+
+    
   };
 
   return (

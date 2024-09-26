@@ -48,7 +48,7 @@ model Account {
   session_state     String?
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
+  @@unique([provider, providerAccountId],name: "provider_providerAccountId" )
 }
 
 model Conversation {
