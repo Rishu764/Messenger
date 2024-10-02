@@ -3,10 +3,10 @@ import { User } from "@prisma/client";
 import Image from "next/image";
 
 interface AvatarProps{
-    currentUser?: User| null;
+    user?: User| null;
 }
 const Avatar:React.FC<AvatarProps> = ({
-    currentUser: user
+    user: user
 })=>{
     return (
         <div className="relative">
