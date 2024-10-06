@@ -41,7 +41,7 @@ const ConversationId = async ({
            "
            >
             <Header conversation={conversation} />
-            <Body  />
+            <Body initialMessages={messages} />
             <Form />
            </div>
         </div>
