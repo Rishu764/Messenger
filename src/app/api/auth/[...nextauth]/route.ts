@@ -50,6 +50,11 @@ export const authOptions: AuthOptions = {
     session:{
         strategy:'jwt'
     },
+    callbacks:{
+        async redirect({ url, baseUrl }) {
+            return baseUrl + '/'
+        }
+    },
     secret:process.env.NEXTAUTH_SECRET,
 };
 const handler = NextAuth(authOptions);
