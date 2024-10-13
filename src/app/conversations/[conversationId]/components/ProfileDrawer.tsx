@@ -2,11 +2,12 @@
 
 import useOtherUser from "@/app/hooks/useOtherUser";
 import { Conversation, User } from "@prisma/client";
-import { format } from "date-fns";
-import { useMemo, Fragment } from "react";
+import { format, set } from "date-fns";
+import { useMemo, Fragment, useState } from "react";
 import { IoClose, IoTrash } from 'react-icons/io5'
 import { Dialog, Transition } from "@headlessui/react";
 import Avatar from "@/app/components/Avatar";
+import ConfirmModal from "./ConfirmModal";
 
 interface ProfileDrawerProps {
     onClose: () => void,
@@ -20,6 +21,8 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     isOpen,
     onClose
 }) => {
+    
+    const [confirmOpen , setConfirmOpen ] = useState(false);
     const otherUser = useOtherUser(data);
     const joinedDate = useMemo(() => {
         return format(new Date(otherUser.createdAt), 'PP');
@@ -36,6 +39,10 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
         return 'Active';
     }, [data]);
     return (
+        <>
+        <ConfirmModal
+         isOpen={confirmOpen}
+         onClose={()=> setConfirmOpen(false)}/>
         <Transition.Root show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={onClose}>
 
@@ -148,7 +155,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                             Close panel
 
                                                         </span>
-                                                        <IoClose size={24} />
+                                                        <IoClose size={24}  />
                                                     </button>
 
                                                 </div>
@@ -192,7 +199,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                 </div>
                                                 <div className="flex gap-10 my-8">
                                                     <div
-                                                        onClick={() => { }}
+                                                        onClick={() => setConfirmOpen(true)}
                                                         className="
                                    flex
                                    flex-col
@@ -318,6 +325,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
             </Dialog>
         </Transition.Root>
+        </>
 
     )
 }
