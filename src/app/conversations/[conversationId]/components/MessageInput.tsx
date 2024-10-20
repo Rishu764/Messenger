@@ -1,12 +1,10 @@
 'use client';
 
-import { Conversation } from "@prisma/client";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface MessageInputProps {
     id:string,
     register: UseFormRegister<FieldValues>,
-    errors: FieldErrors,
     type?: string,
     placeholder?: string,
     required?: boolean,
@@ -17,7 +15,6 @@ const MessageInput: React.FC<MessageInputProps> = ({
     id,
     register,
     type,
-    errors,
     placeholder,
     required
 }) => {

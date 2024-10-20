@@ -12,7 +12,6 @@ interface UserBoxProps{
     data: User
 }
 const UserBox:React.FC<UserBoxProps> = ({
-    key,
     data
 })=>{
     const router = useRouter();

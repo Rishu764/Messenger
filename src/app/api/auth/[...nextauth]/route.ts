@@ -51,7 +51,7 @@ export const authOptions: AuthOptions = {
         strategy:'jwt'
     },
     callbacks:{
-        async redirect({ url, baseUrl }) {
+        async redirect({ baseUrl }) {
             return baseUrl + '/'
         }
     },

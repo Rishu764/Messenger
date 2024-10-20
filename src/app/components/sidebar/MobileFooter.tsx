@@ -3,8 +3,6 @@
 import useConversation from "@/app/hooks/useConversation";
 import useRoutes from "@/app/hooks/useRoutes";
 import MobileItem from "./MobileItem";
-import { User } from "@prisma/client";
-import getCurrentUser from "@/app/actions/getCurrentUser";
 
 
 const MobileFooter= () => {
