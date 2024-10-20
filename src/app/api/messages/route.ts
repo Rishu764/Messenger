@@ -64,7 +64,7 @@ try{
     
     const lastMessage = updatedConversation.messages[updatedConversation.messages.length-1];
 
-   updatedConversation.users.map((user: { email: string | string[]; })=>{
+   updatedConversation.users.map((user)=>{
     pusherServer.trigger(user.email!,'conversation:update',{
         id: conversationId,
         lastMessage

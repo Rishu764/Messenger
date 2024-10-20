@@ -39,7 +39,7 @@ export async function POST(request:Request){
                 }
             });
              
-            newConveration.users.map((user: { email: string | string[]; })=>{
+            newConveration.users.map((user)=>{
                 if(user.email){
                     pusherServer.trigger(user.email, 'conversation:new', newConveration)
                 }
@@ -90,7 +90,7 @@ export async function POST(request:Request){
             }
         });
 
-        newConversation.users.map((user: { email: string | string[]; })=>{
+        newConversation.users.map((user)=>{
             if(user.email){
                 pusherServer.trigger(user.email,'conversation:new',newConversation);
             };
